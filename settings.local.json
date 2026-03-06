@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(source .venv/bin/activate && pytest clientcomms/tests/test_client_schemas.py -v --reuse-db 2>&1)",
+      "Bash(source /Users/jeffsnyder/code/alerts-py/.venv/bin/activate && pytest clientcomms/tests/test_client_router.py -v --reuse-db 2>&1)",
+      "WebFetch(domain:logfire-us.pydantic.dev)",
+      "Bash(source .venv/bin/activate && unset ALL_PROXY && unset all_proxy && unset HTTP_PROXY && unset HTTPS_PROXY && unset http_proxy && unset https_proxy && pytest clientcomms/tests/test_client_router.py -v --reuse-db 2>&1)",
+      "Bash(source .venv/bin/activate && pytest clientcomms/tests/test_client_router.py clientcomms/tests/test_client_schemas.py -v --reuse-db 2>&1)",
+      "Bash(tail:*)",
+      "Bash(source .venv/bin/activate && beans query '{ beans\\(parent: \"alerts-py-rmso\"\\) { id title status } }' 2>&1)",
+      "Bash(head:*)",
+      "Bash(source .venv/bin/activate && beans query *)",
+      "Bash(source:*)",
+      "Bash(beans show:*)",
+      "Bash(grep:*)",
+      "WebSearch"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  }
+}
